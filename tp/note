@@ -1,0 +1,45 @@
+## airbus
+aribus seems like a very old library that cannot find any useful information from google.
+even it has some fancy effect, not sure if could use it in future.
+## inconvient
+if you want to exprience airbus, you also need to install compiler version above C++ 14.0.
+which is troublesome and disk-cost expensive thing for me..
+
+## fire
+this library is relatively useful and common, at least doubao clearly knows it
+
+very flexibale, even input param order changes no matters!
+1.如果需要灵活的参数列表 或者变长参数， 比较推荐
+2.可以借助 Fire 来实现管道的功能，这个功能可以让我们在断点运行自己想要运行的代码
+
+## pydantic
+主要用于数据验证和设置管理。它允许你使用 Python 的类型提示来定义数据结构，并根据这些类型提示来验证数据是否符合预期
+
+## rich
+提供文本美化，表格边框之类的， 关键是我能用他做一些什么出来
+1.生成table，报表
+2.进度条
+3.log美化。文本美化
+4.树形结构展示数据
+https://github.com/Textualize/rich/blob/master/examples/ 可以参考官方小程序
+
+## matplotlib vs seaborn
+如果你需要对图形进行非常精细的控制，需要定制大量的细节，或者创建一些非常独特的图形，使用 matplotlib。
+如果你想快速绘制出具有统计信息的、外观漂亮的图形，并且数据是 pandas 的 DataFrame 形式，使用 seaborn 会更方便快捷。
+两者都是画图的，貌似seaborn比matlob更方便美观一点？？
+
+NOTE:After plt.show() is called, a new figure is created. 
+To deal with this, you can call plt.savefig("your_image.png") before you call plt.show() 
+
+
+## impala + sqllab
+impala: 大规模并行处理（MPP） SQL 查询引擎,通过将查询分布式地在集群中的多个节点上并行执行，实现了对大数据集的快速查询，减少了查询延迟
+superset： 怎么围绕它打造东西
+
+## FATAPI 和FLASK
+
+## Kaldi
+Kaldi是目前最流行的ASR（自动语音识别技术Automatic Speech Recognition）开源项目之一，理解为NLP的特殊分支
+
+## pyinstaller
+手残版python打包程序
