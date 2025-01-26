@@ -7,7 +7,7 @@ from langchain.prompts import PromptTemplate
 
 
 
-#Initialize Model
+#Initialize Model from remote
 llm = ChatGoogleGenerativeAI(model="gemini-pro")
 
 #Load the blog
@@ -21,7 +21,7 @@ CONCISE SUMMARY:"""
 
 prompt = PromptTemplate.from_template(template)
 
-llm_chain = LLMChain(llm=llm, prompt=prompt)
+llm_chain = LLMChain(prompt | llm)
 stuff_chain = StuffDocumentsChain(llm_chain=llm_chain, document_variable_name="text")
 
 #Invoke Chain
