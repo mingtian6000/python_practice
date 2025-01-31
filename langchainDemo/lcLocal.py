@@ -1,12 +1,13 @@
 from langchain_ollama import OllamaLLM
 from langchain_community.llms import Ollama
 
-model = OllamaLLM(model="mistral")
+model = OllamaLLM(model="deepseek-r1:7b")
+print(model)
 model.invoke("Come up with 10 names for a song about parrots")
 
 host="localhost" 
 port="11434" 
-llm=Ollama(base_url=f"http://{host}:{port}", model="mistral",temperature=0)
+llm=Ollama(base_url=f"http://{host}:{port}", model="deepseek-r1:7b",temperature=0)
 res=llm.invoke("who are you")
 print(res)
 ### above and below not work from my side...

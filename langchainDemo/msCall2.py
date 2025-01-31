@@ -1,6 +1,6 @@
 from modelscope import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "qwen/Qwen2.5-1.5B-Instruct"
+model_name = "deepseek-r1:7b"
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype="auto",
@@ -10,7 +10,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 prompt = "Give me a short introduction to large language model."
 messages = [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
+    {"role": "system", "content": "You are deepseek-r1. You are a helpful assistant."},
     {"role": "user", "content": prompt}
 ]
 text = tokenizer.apply_chat_template(
