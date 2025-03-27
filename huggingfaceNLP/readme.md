@@ -53,4 +53,31 @@ you can download model in several ways,
 
 directly download or download via CLI or download via instance.
 1.pip install huggingface_hub
+
 2.huggingface-cli download --resume-download sentence-transformers/all-MiniLM-L6-v2 --local-dir all-MiniLM-L6-v2
+huggingface-cli download --resume-download sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 --local-dir paraphrase-multilingual-MiniLM-L12-v2
+
+3.when load model ,disable it from remote repo:
+model = SentenceTransformer('all-MiniLM-L6-v2',local_files_only=True, cache_folder='C:\\Users\\alice\\all-MiniLM-L6-v2')
+
+## 比如我定义了IBE 和OBE，但我在搜索IBE时候OBE也会返回，但其实我只想要IBE的结果， 这是为什么以及怎么处理
+原因分析
+​语义混淆：模型可能认为“猴子”和“西瓜”在某种上下文中相关（例如“猴子吃西瓜”），导致向量相似度高。
+​嵌入质量不足：使用的 Sentence Transformer 模型未在足够区分性的数据上微调。
+​搜索策略问题：向量数据库的搜索参数（如相似度阈值、Top-K 设置）未过滤低相关性结果。
+
+解决方案：
+选择更专业的模型； ​自定义微调：-->这个是从模型层面
+​增强输入文本的区分性， 为关键词增加跟多的标签 -->这样模型就会关注跟多的类别差异
+调整搜索策略：设置相似度阈值，高于这个值结果才返回（TOPK）
+向量数据库优化： 这个比较难，一般做不来，也不做。。
+
+总之核心思想就是拉开词语在向量空间的距离。。
+![alt text](image-1.png)
+但是看哦，直接在HG上计算相似度也非常高。。
+
+
+## FAISS数据库
+在使用 ​FAISS 时，生成的向量数据默认是存储在内存中​（除非显式保存到文件）。FAISS 本身是一个高性能的内存索引库，不提供内置的图形化界面（UI）
+调用 faiss.write_index() 保存到磁盘
+还有一点要注意的，不要重复写入，重复写入会加大某个的权重，要做去重处理，不介意内存的话就不要落盘
