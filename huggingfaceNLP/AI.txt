@@ -1,0 +1,25 @@
+1. OBE (Outward Beneficiary Enquiry)
+​Definition: An ​outward beneficiary enquiry is initiated by the ​sending bank (remitter’s bank) to verify or investigate details about a ​beneficiary (recipient) in another bank or financial institution.
+​Purpose:
+To confirm beneficiary account details (name, account number, bank details) before processing an outward payment.
+To resolve discrepancies (e.g., mismatched beneficiary name vs. account number).
+To prevent fraud or misdirected payments.
+​Process:
+The remitter’s bank sends a request (via SWIFT, internal systems, or clearing networks) to the beneficiary’s bank.
+The beneficiary’s bank responds with confirmation or correction of details.
+​Example:
+If Bank A is sending a wire transfer to Bank B but is unsure if the beneficiary details match, it sends an ​OBE to Bank B for verification.
+
+
+​2. IBE (Inward Beneficiary Enquiry)
+​Definition: An ​inward beneficiary enquiry is received by a bank from another bank (the sender’s bank) to verify or clarify beneficiary details for an incoming payment.
+​Purpose:
+To validate beneficiary account information for an ​incoming transaction.
+To resolve issues like incomplete/incorrect beneficiary data.
+To comply with anti-money laundering (AML) checks.
+​Process:
+The beneficiary’s bank receives the query (e.g., via SWIFT MT199 or MT192) and checks its records.
+It responds with confirmation or requests additional details.
+​Example:
+If Bank B receives a payment instruction from Bank A but the beneficiary name is unclear, Bank B may receive an ​IBE from Bank A to confirm the details.
+
