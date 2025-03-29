@@ -81,3 +81,21 @@ model = SentenceTransformer('all-MiniLM-L6-v2',local_files_only=True, cache_fold
 在使用 ​FAISS 时，生成的向量数据默认是存储在内存中​（除非显式保存到文件）。FAISS 本身是一个高性能的内存索引库，不提供内置的图形化界面（UI）
 调用 faiss.write_index() 保存到磁盘
 还有一点要注意的，不要重复写入，重复写入会加大某个的权重，要做去重处理，不介意内存的话就不要落盘
+
+## Collection knowledge already exists 
+错误时，说明你尝试在 ChromaDB 中创建一个已存在的集合（Collection）
+如果之前运行过代码创建了同名集合（knowledge），再次运行时会报此错误
+要删除已经存在的集合：
+
+import chromadb
+client = chromadb.PersistentClient(path="ollama_rag_db")
+if "knowledge" in [col.name for col in client.list_collections()]:
+    client.delete_collection("knowledge")
+collection = client.create_collection(name="knowledge")
+
+## important NOTES for sql agents
+1.Local models may require more precise prompting than cloud models
+2.SQL-specific models (like sqlcoder) generally perform better than general-purpose models
+3.Always test with non-destructive queries first
+4.For production use, consider adding query validation layers
+5.You may need to adjust the prompt based on your specific model's capabilities
